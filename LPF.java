@@ -1,37 +1,35 @@
-import java.util.ArrayList;
-
 public class LPF{
 
-	long bigDick = 600851475143l;
-	ArrayList<Integer> lol;
+	long num;
 	int urMom;
+	boolean bobbers;
 
-	public LPF(){
-		lol = new ArrayList<Integer>();
+	public LPF(long num){
+		bobbers = true;
+		this.num = num;
 		urMom = 0;
-		getPrimes();
-		for(int i = 0; i < lol.size(); i++){
-			if(bigDick % lol.get(i) == 0){
-				urMom = Math.max(urMom, lol.get(i));
-			}
+
+		init();
 		System.out.println(urMom);
-		}
 	}
 
-	private void getPrimes(){
-		boolean bobbyboy = false;
-		for(int i = 1; i < bigDick / 2; i++){
-			for(int x = 1; x < i; x++){
-				if(i % x == 0)
-					bobbyboy = true;
+	public void init(){
+		for(int i = 5; i <= num; i += 2){
+			for(int x = 3; x < i / 3; x += 2){
+				if(i % x == 0){
+					bobbers = false;
+					break;
+				}
 			}
-			if(!bobbyboy)
-				lol.add(new Integer(i));
-			bobbyboy = false;
-		}
+			if(bobbers && num % i == 0){
+				num /= i;
+				urMom = i;
+			}
+			bobbers = true;	
+		}		
 	}
 
 	public static void main(String[] args){
-		LPF runner = new LPF();
+		LPF runner = new LPF(600851475143l);
 	}
 }
