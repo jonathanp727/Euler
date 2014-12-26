@@ -1,26 +1,28 @@
 public class LargestSeriesProduct{
 	private char[] num;
 	public LargestSeriesProduct(String number){
-		char[] num = new char[1000];
+		int[] num = new int[1000];
 		for(int i = 0; i < 1000; i++){
-			num[i] = number.charAt(i);
+			num[i] = Integer.parseInt(Character.toString(number.charAt(i)));
 		}
-		long maxSum = 0l; long sum = 0l; int index = 0;
+		int maxProduct = 1; int product = 1; int index = 0;
 		for(int i = 0; i < 987; i++){
 			for(int r = 0; r < 13; r++){
-				sum += (long)num[i + r];
+				product *= num[i + r];
+				if(product == 0){
+					break;
+				}
 			}
-			if(sum > maxSum){
-				maxSum = sum;
+			if(product > maxProduct){
+				maxProduct = product;
 				index = i;
 			}
-			sum = 0;
+			product = 1;
 		}
-		int product = 1;
-		for(int i = 0; i < 13; i++){
-			product *= (int)num[index + i];
+		System.out.println(maxProduct);
+		for(int i = index; i < index + 14; i++){
+			System.out.println(num[i]);
 		}
-		System.out.println(product);
 	}
 
 	public static void main(String[] args){
