@@ -1,0 +1,21 @@
+public class SSD{
+	public SSD(){
+		System.out.println(init());
+	}
+
+	public int init(){
+		int sum = 0; int square = 0;
+		for(int i = 1; i <= 100; i++){
+			sum += (int)Math.pow(i, 2);
+		}
+		for(int i = 1; i <= 100; i++){
+			square += i;
+		}
+		square = (int)Math.pow(square, 2);
+		return square - sum;
+	}
+
+	public static void main(String[] args){
+		SSD sSD = new SSD();
+	}
+}
